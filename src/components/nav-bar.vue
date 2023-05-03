@@ -13,7 +13,7 @@
               </button>
             </a>
 
-            <button class="p-1 rounded-full text-white">
+            <button class="p-1 rounded-full text-white" @click="logout">
               <ion-icon class="w-8 h-8 mr-4" name="log-out-outline"></ion-icon>
             </button>
         </div>
@@ -35,6 +35,12 @@ export default {
     lengthCart() {
       console.log(this.cart)
       return this.cart.length;
+    }
+  },
+  methods: {
+    logout() {
+      this.$router.push('/')
+      localStorage.clear();
     }
   }
 }
