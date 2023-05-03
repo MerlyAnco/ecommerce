@@ -79,21 +79,26 @@
     <div v-else>
       <loading-spinner/>
     </div>
+    <product-detail v-if="showModal" :product="productSelect" @close="showModal = false" />
   </section>
 </template>
 
 <script>
 import { mapActions, mapState } from "vuex";
 import loadingSpinner from "@/components/common/loading-spinner.vue";
+import productDetail from "@/components/product-detail.vue";
 
 export default {
   name: "HomeView",
   components: {
-    loadingSpinner
+    loadingSpinner,
+    productDetail
   },
   data() {
     return {
       activeCategory: "",
+      productSelect: null,
+      showModal: false,
     };
   },
   computed: {
@@ -119,7 +124,8 @@ export default {
       this.fetchProductsByCategory(this.activeCategory);
     },
     addProduct(product) {
-      this.addToCart(product)
+      this.showModal = true;
+      this.productSelect = product;
       console.log(this.cart)
       console.log(this.cart.length)
     }
