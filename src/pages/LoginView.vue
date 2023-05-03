@@ -54,7 +54,7 @@ export default {
       console.log(user)
       if (user) {
         localStorage.setItem("user", JSON.stringify(user));
-        this.$router.push("/dashboard");
+        this.$router.push("/home");
       } else {
         this.errorMessage = "Nombre de usuario o contraseña incorrectos.";
         setTimeout(() => this.errorMessage = '', 3000);

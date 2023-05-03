@@ -15,22 +15,26 @@ const routes = [
   {
     path: '/home',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    beforeEnter: requireAuth
   },
   {
     path: '/cart',
     name: 'cart',
-    component: CartView
+    component: CartView,
+    beforeEnter: requireAuth
   },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../pages/AboutView.vue')
-  }
 ]
+
+function requireAuth(to, from, next) {
+  if (localStorage.getItem('user')) {
+    next()
+  } else {
+    next({
+      name: 'login'
+    })
+  }
+}
 
 const router = new VueRouter({
   mode: 'history',
