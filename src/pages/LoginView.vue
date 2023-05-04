@@ -11,11 +11,11 @@
         <label class="font-bold mb-2 block">Email:</label>
         <input
           class="border border-orange-500 rounded py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-          type="email" v-model="email"
+          type="email" v-model="email" placeholder="example@example.com"
         />
         <label class="font-bold mb-2 block">Password:</label>
         <div class="w-fit m-auto items-center relative">
-          <input class="border border-orange-500 rounded py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline" :type="type" v-model="password"/>
+          <input class="border border-orange-500 rounded py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline" :type="type" v-model="password" placeholder="********"/>
           <img class="absolute right-0 top-0 mr-3 mt-3 cursor-pointer" @click="showPassword" :src="eyeIconSource" :alt="passwordVisible ? 'Hide password' : 'Show password'" />
         </div>
         <span class="text-red-500 text-sm mt-1">{{ errorMessage }}</span>
@@ -42,7 +42,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['users']),
+    ...mapState('auth', ['users']),
     passwordVisible() {
       return this.type === "password";
     },
@@ -53,7 +53,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['generateToken']),
+    ...mapActions('auth', ['generateToken']),
     showPassword() {
       this.type = this.passwordVisible ? 'text' : 'password';
     },

@@ -30,15 +30,17 @@ import { mapState } from 'vuex';
 export default {
   name: "nav-bar-footer",
   computed: {
-    ...mapState(['cart']),
+    ...mapState({
+      cart:(state) => state.cart.cart
+    }),
     lengthCart() {
       return this.cart.length;
     }
   },
   methods: {
     logout() {
-      this.$router.push('/')
       localStorage.clear();
+      this.$router.push('/')
     }
   }
 };

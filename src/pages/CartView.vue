@@ -53,11 +53,11 @@
                       </div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap items-center">
-                      <div class="flex justify-around">
+                      <div class="flex justify-around gap-3">
                         <div
                           class="flex justify-between items-center space-x-3"
                         >
-                          <button @click="decrement(item)" class="icon-add">
+                          <button @click="decrement(item)" class="icon-add" :class="[item.quantity==1 ? 'bg-gray-600': '']" :disabled="item.quantity==1">
                             -
                           </button>
                           <p class="p-2 border">{{ item.quantity }}</p>
@@ -139,11 +139,13 @@ export default {
     const cart = JSON.parse(localStorage.getItem("cart"));
 
     if (cart) {
-      this.$store.commit("SET_CART", cart);
+      this.setCart(cart);
     }
   },
   computed: {
-    ...mapState(["cart"]),
+    ...mapState({
+      cart:(state) => state.cart.cart
+    }),
     total() {
       return this.cart.reduce((accumulator, product) => {
         let total = accumulator + product.price * product.quantity
@@ -152,7 +154,7 @@ export default {
     },
   },
   methods: {
-    ...mapMutations({
+    ...mapMutations('cart',{
       increment: "INCREMENT_PRODUCT_QUANTITY",
       decrement: "DECREMENT_PRODUCT_QUANTITY",
       remove: "DELETE_PRODUCT_OF_CART",

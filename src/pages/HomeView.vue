@@ -104,19 +104,22 @@ export default {
     };
   },
   computed: {
-    ...mapState(["products", "categories", "isLoading", "cart"]),
+    ...mapState({
+      products: (state) => state.products.products,
+      categories: (state) => state.products.categories,
+      isLoading: (state) => state.products.isLoading,
+    }),
   },
   mounted() {
     this.fetchProducts();
     this.fetchCategories(); // assuming that fetchProducts is a Vuex action
   },
   methods: {
-    ...mapActions([
-      "fetchProducts",
-      "fetchCategories",
-      "fetchProductsByCategory",
-      "addToCart",
-    ]),
+    ...mapActions({
+      fetchProducts: "products/fetchProducts",
+      fetchCategories: "products/fetchCategories",
+      fetchProductsByCategory: "products/fetchProductsByCategory",
+    }),
     filterCategory(category) {
       this.activeCategory = category;
       if(category == 'all') {
