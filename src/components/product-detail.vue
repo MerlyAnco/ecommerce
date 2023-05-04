@@ -27,7 +27,7 @@
                         <p class="text-4xl font-bold">$ {{ product.price }}</p>
                         <hr/>
                         <button type="button" class="button-primary w-full shadow-sm px-12 py-2  text-base font-medium " @click="addProduct">
-                          AÑADIR AL CARRITO
+                          ADD TO CART
                         </button>
                     </div>
                 </div>
@@ -57,7 +57,9 @@ export default {
         }
     },
     methods: {
-      ...mapActions(['addToCart']),
+      ...mapActions({
+        addToCart: "cart/addToCart",
+      }),
       addProduct() {
         this.addToCart(this.product),
         setTimeout(() => {

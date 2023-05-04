@@ -28,7 +28,9 @@ import { mapState } from 'vuex';
 export default {
   name: 'nav-bar',
   computed: {
-    ...mapState(['cart']),
+    ...mapState({
+      cart:(state) => state.cart.cart
+    }),
     lengthCart() {
       return this.cart.length;
     }
