@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    /* Typography */
+    h1 {
+      @apply text-4xl font-bold text-gray-900;
+    }
+    h2 {
+      @apply text-3xl font-semibold text-gray-800;
+    }
+    h3 {
+      @apply text-2xl font-medium text-gray-700;
+    }
+    h4 {
+      @apply text-xl font-medium text-gray-600;
+    }
+    p {
+      @apply leading-7 text-gray-500;
+    }
+  
+    /* Box-sizing */
+    *,
+    *::before,
+    *::after {
+      @apply box-border;
+    }
+
+    .content-area {
+        min-height: calc(100vh - 150px);
+    }
+}
+
+@layer components {
+    .button-primary {
+        @apply bg-orange-500 text-white focus:bg-orange-700
+    }
+    .icon-add {
+        @apply w-6 h-6 bg-orange-500 text-white rounded-full
+    }
+}
