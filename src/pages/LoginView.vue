@@ -1,5 +1,5 @@
 <template>
-  <section class="container mx-auto grid md:grid-cols-2 px-10 py-20 h-screen">
+  <section class="container mx-auto grid md:grid-cols-2 p-5 md:px-10 md:py-20 h-screen">
     <div class="hidden md:flex flex-col justify-center items-center px-4">
       <h1 class="text-orange-500 mb-8">¡Bienvenido a nuestra tienda en línea!</h1>
       <p class="text-lg text-gray-700">Encuentra los mejores productos <span class="font-bold text-gray-900">para ti y tu familia</span>.</p>
@@ -7,7 +7,7 @@
     </div>
     <div class="flex flex-col content-center justify-center bg-white shadow-lg">
       <img class="logo mt-4 mx-auto" src="../assets/img/logo.png" alt="" />
-      <form @submit.prevent="login" class="bg-white shadow rounded p-6 mb-4 mx-auto mt-4">
+      <form @submit.prevent="login" class="p-6 mb-4 mx-auto mt-4">
         <label class="font-bold mb-2 block">Email:</label>
         <input
           class="border border-orange-500 rounded py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
