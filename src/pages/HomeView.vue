@@ -1,5 +1,5 @@
 <template>
-  <section class="container mx-auto">
+  <section class="container content-area mx-auto pb-24">
     <div
       class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-8 m-5 max-w-4xl mx-auto"
     >
