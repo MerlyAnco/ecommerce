@@ -7,15 +7,6 @@
     h1 {
       @apply text-4xl font-bold text-gray-900;
     }
-    h2 {
-      @apply text-3xl font-semibold text-gray-800;
-    }
-    h3 {
-      @apply text-2xl font-medium text-gray-700;
-    }
-    h4 {
-      @apply text-xl font-medium text-gray-600;
-    }
     p {
       @apply leading-7 text-gray-500;
     }
@@ -29,14 +20,21 @@
 
     .content-area {
         min-height: calc(100vh - 150px);
+        @apply px-5 pt-3 pb-24 mx-auto
     }
 }
 
 @layer components {
     .button-primary {
-        @apply bg-orange-500 text-white focus:bg-orange-700
+        @apply bg-orange-500 font-semibold text-white hover:bg-orange-700
     }
     .icon-add {
         @apply w-6 h-6 bg-orange-500 text-white rounded-full
+    }
+    .icon {
+      @apply w-8 h-8
+    }
+    .card {
+      @apply flex flex-col items-center justify-center rounded-lg shadow-md p-4 gap-3 hover:bg-orange-500 hover:text-white
     }
 }

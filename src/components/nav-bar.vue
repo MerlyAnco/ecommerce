@@ -9,7 +9,7 @@
             <router-link to="/cart">
               <button class="p-1 rounded-full text-white relative">
                 <ion-icon class="w-8 h-8" name="cart-outline"></ion-icon>
-                <p class="absolute top-0 -right-1.5">{{ lengthCart }}</p>
+                <p class="text-white absolute -top-1.5 -right-1.5">{{ lengthCart }}</p>
               </button>
             </router-link>
 
@@ -27,20 +27,16 @@ import { mapState } from 'vuex';
 
 export default {
   name: 'nav-bar',
-  props: {
-    msg: String
-  },
   computed: {
     ...mapState(['cart']),
     lengthCart() {
-      console.log(this.cart)
       return this.cart.length;
     }
   },
   methods: {
     logout() {
-      this.$router.push('/')
       localStorage.clear();
+      this.$router.push('/')
     }
   }
 }

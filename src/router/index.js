@@ -10,8 +10,14 @@ const routes = [
   {
     path: '/',
     name: 'login',
-    component: LoginView
-  },
+    component: LoginView,
+    beforeEnter: (to, from, next) => {
+      if (localStorage.getItem('token')) {
+        next('/home');
+      } else {
+        next();
+      }
+    }  },
   {
     path: '/home',
     name: 'home',
@@ -27,7 +33,7 @@ const routes = [
 ]
 
 function requireAuth(to, from, next) {
-  if (localStorage.getItem('user')) {
+  if (localStorage.getItem('token')) {
     next()
   } else {
     next({

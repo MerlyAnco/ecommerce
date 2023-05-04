@@ -6,7 +6,7 @@
       class="col-span-2 flex flex-col justify-center bg-white py-6 px-3 h-fit"
     >
       <p class="text-2xl font-bold text-left mb-4 text-gray-900">
-        Sumario del Articulo ({{ cart.length }})
+        Article Summary  ({{ cart.length }})
       </p>
       <div
         v-if="cart.length !== 0"
@@ -19,30 +19,10 @@
             <table class="min-w-full divide-y divide-gray-200">
               <thead class="bg-gray-50">
                 <tr>
-                  <th
-                    scope="col"
-                    class="px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider"
-                  >
-                    Artículo
-                  </th>
-                  <th
-                    scope="col"
-                    class="px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider"
-                  >
-                    Precio
-                  </th>
-                  <th
-                    scope="col"
-                    class="px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider"
-                  >
-                    Cantidad
-                  </th>
-                  <th
-                    scope="col"
-                    class="px-6 py-3 text-xs font-medium text-gray-500 text-center uppercase tracking-wider"
-                  >
-                    Total
-                  </th>
+                  <StyledTh scope="col">Article</StyledTh>
+                  <StyledTh scope="col">Price</StyledTh>
+                  <StyledTh scope="col">Quantity</StyledTh>
+                  <StyledTh scope="col">Total</StyledTh>
                 </tr>
               </thead>
               <tbody class="bg-white">
@@ -60,7 +40,7 @@
                       <div class="flex items-center">
                         <div class="">
                           <img
-                            class="h-24 w-auto rounded-full"
+                            class="h-24 w-auto"
                             :src="item.image"
                             alt="Artículo"
                           />
@@ -68,7 +48,7 @@
                       </div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                      <div class="text-sm text-gray-900">
+                      <div class="text-lg text-gray-900">
                         $ {{ item.price }}
                       </div>
                     </td>
@@ -94,7 +74,7 @@
                       </div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                      <div class="text-sm text-gray-900">
+                      <div class="text-lg text-gray-900">
                         $ {{ item.price * item.quantity }}
                       </div>
                     </td>
@@ -111,14 +91,14 @@
           src="../assets/img/bag.png"
           alt="bolsa vacia"
         />
-        <p class="text-xl font-bold">TU BOLSA ESTÁ VACÍO</p>
+        <p class="text-xl font-bold">YOUR BAG IS EMPTY!</p>
         <button class="button-primary w-auto px-8 py-2" @click="goToShop">
-          Comprar ahora
+          Buy Now
         </button>
       </div>
     </div>
     <div class="shadow text-left p-5 flex flex-col space-y-6 bg-white h-fit">
-      <p class="text-lg font-bold text-gray-900">Resumen del pedido</p>
+      <p class="text-lg font-bold text-gray-900">Order Summary</p>
       <div class="flex justify-between">
         <p class="text-sm">Subtotal</p>
         <p class="text-3xl font-bold">$ {{ total }}</p>
@@ -131,7 +111,7 @@
             : 'bg-orange-500 text-white',
         ]"
       >
-        Pagar ahora
+        Pay Now
       </button>
     </div>
   </section>
@@ -139,8 +119,22 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
+import styled from 'vue-styled-components';
+
+const StyledTh = styled.th`
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  color: #717171;
+  letter-spacing: 0.05em;
+  padding: 0.75rem 1.5rem;
+`;
+
 export default {
-  components: {},
+  components: {
+    StyledTh
+  },
   created() {
     const cart = JSON.parse(localStorage.getItem("cart"));
 

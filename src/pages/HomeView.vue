@@ -1,49 +1,51 @@
 <template>
-  <section class="container content-area mx-auto pb-24">
-    <div
-      class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-8 m-5 max-w-4xl mx-auto"
-    >
-      <button
-        class="flex flex-col items-center justify-center rounded-lg shadow-md p-4 gap-3"
-        :class="[
-          activeCategory === 'all' ? 'bg-orange-400 text-white' : 'bg-white',
-          'shadow-md',
-        ]"
-        @click="filterCategory('all')"
+  <section class="container content-area">
+    <div class="overflow-x-auto scrollbar-hidden">
+      <div
+        class="grid grid-cols-5 gap-4 m-5 min-w-[40rem] max-w-5xl mx-auto lg:gap-8"
       >
-      <ion-icon name="home-outline"></ion-icon>
-      All
-    </button>
-      <button
-        v-for="category in categories"
-        :key="category"
-        @click="filterCategory(category)"
-        class="flex flex-col items-center justify-center rounded-lg shadow-md p-4 gap-3"
-        :class="[
-          activeCategory === category ? 'bg-orange-400 text-white' : 'bg-white',
-          'shadow-md',
-        ]"
-      >
-        <ion-icon
-          v-if="category == 'jewelery'"
-          name="diamond-outline"
-        ></ion-icon>
-        <ion-icon
-          v-if="category == 'men\'s clothing'"
-          name="shirt-outline"
-        ></ion-icon>
-        <ion-icon
-          v-if="category == 'electronics'"
-          name="desktop-outline"
-        ></ion-icon>
-        <ion-icon
-          v-if="category == 'women\'s clothing'"
-          name="woman-outline"
-        ></ion-icon>
-        <p>{{ category }}</p>
+        <button
+          class="card"
+          :class="[
+            activeCategory === 'all' ? 'bg-orange-400 text-white' : 'bg-white',
+            'shadow-md',
+          ]"
+          @click="filterCategory('all')"
+        >
+        <ion-icon class="icon" name="home-outline"></ion-icon>
+        All
       </button>
+        <button
+          v-for="category in categories"
+          :key="category"
+          @click="filterCategory(category)"
+          class="card"
+          :class="[
+            activeCategory === category ? 'bg-orange-400 text-white' : 'bg-white',
+            'shadow-md',
+          ]"
+        >
+          <ion-icon class="icon"
+            v-if="category == 'jewelery'"
+            name="diamond-outline"
+          ></ion-icon>
+          <ion-icon class="icon"
+            v-if="category == 'men\'s clothing'"
+            name="shirt-outline"
+          ></ion-icon>
+          <ion-icon class="icon"
+            v-if="category == 'electronics'"
+            name="desktop-outline"
+          ></ion-icon>
+          <ion-icon class="icon"
+            v-if="category == 'women\'s clothing'"
+            name="woman-outline"
+          ></ion-icon>
+          <span>{{ category }}</span>
+        </button>
+      </div>
     </div>
-
+    <hr class="mb-4 bg-gray-400"/>
     <div v-if="!isLoading" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8">
       <div
         v-for="product in products"
@@ -126,9 +128,7 @@ export default {
     addProduct(product) {
       this.showModal = true;
       this.productSelect = product;
-      console.log(this.cart)
-      console.log(this.cart.length)
-    }
+    },
   },
 };
 </script>

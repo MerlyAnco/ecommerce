@@ -2,7 +2,7 @@
   <div id="app" class="bg-gray-50">
       <nav-bar v-if="$route.path !== '/'"/>
       <router-view/>
-      <nar-bar-footer/>
+      <nar-bar-footer v-if="$route.path !== '/'"/>
   </div>
 </template>
 
